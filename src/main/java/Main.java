@@ -28,11 +28,11 @@ public class Main {
         for(int i = 0; i < 100; i++) {
 
             WebElement searchInput = DRIVER.findElement(By.id("lst-ib"));
-            searchInput.click();
+            searchInput.click(); // ERROR HERE! (intermittent)
             searchInput.sendKeys("WALLA " + Keys.ESCAPE);
 
             WebElement searchButton = DRIVER.findElement(By.cssSelector("#tsf input[value='Google Search']"));
-            searchButton.click();
+            searchButton.click(); // ERROR HERE! (intermittent)
         }
 
         DRIVER.quit();
