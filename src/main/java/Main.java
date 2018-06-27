@@ -1,7 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.interactions.Actions;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -19,6 +18,7 @@ public class Main {
         options.destructivelyEnsureCleanSession();
         options.enablePersistentHovering();
         options.ignoreZoomSettings();
+        options.setCapability("logLevel", "TRACE");
         final WebDriver DRIVER = new InternetExplorerDriver(options);
         DRIVER.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         DRIVER.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
