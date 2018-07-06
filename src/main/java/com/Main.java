@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -30,7 +29,6 @@ public class Main {
         System.setProperty("webdriver.ie.driver", path.toString());
 
         InternetExplorerOptions options = new InternetExplorerOptions();
-        options.introduceFlakinessByIgnoringSecurityDomains();
         options.destructivelyEnsureCleanSession();
         options.enablePersistentHovering();
         options.ignoreZoomSettings();
@@ -39,7 +37,7 @@ public class Main {
         DRIVER.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         DRIVER.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-        for(int i = 0; i < 30; i++) {
+        for(int i = 0; i < 100; i++) {
 
             DRIVER.get("https://www.google.com/");
             WebElement searchInput = DRIVER.findElement(By.id("lst-ib"));
