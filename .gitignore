@@ -13,4 +13,4 @@ buildNumber.properties
 .idea/
 !.idea/misc.xml
 !.idea/modules.xml
-!.idea/selenium-bug-ie-64-alert-check.iml
+!.idea/*.iml

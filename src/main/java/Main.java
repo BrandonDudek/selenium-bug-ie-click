@@ -1,7 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.support.ui.Quotes;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        final String DRIVER_NAME = "IEDriverServer_x32_3.13.0.exe";
+        final String DRIVER_NAME = "IEDriverServer_x32_3.12.0.exe";
 
         try {
             Runtime.getRuntime().exec("taskkill /T /F /IM " + DRIVER_NAME);
@@ -32,22 +31,15 @@ public class Main {
         DRIVER.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         DRIVER.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 25; i++) {
 
             DRIVER.get("https://www.google.com/");
             WebElement searchInput = DRIVER.findElement(By.id("lst-ib"));
-            searchInput.click(); // ERROR HERE! (intermittent)
-            searchInput.sendKeys("Walla Walla Walla" + Keys.ESCAPE);
+            searchInput.click(); // ERROR HERE! (usually always, but sometimes intermittent)
+            searchInput.sendKeys("Serenity Firefly" + Keys.ESCAPE);
 
-            try {
-                Thread.sleep(500);
-            }
-            catch(InterruptedException e) {
-                // Ignore.
-            }
-
-            WebElement searchButton = DRIVER.findElement(By.cssSelector("#tsf input[value='Google Search']"));
-            searchButton.click(); // ERROR HERE! (intermittent)
+            WebElement searchButton = DRIVER.findElement(By.cssSelector("#tsf input[value='Google Search'][type=submit]"));
+            searchButton.click(); // ERROR HERE! (usually always, but sometimes intermittent)
         }
 
         DRIVER.quit();
