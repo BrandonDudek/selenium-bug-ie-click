@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        final String DRIVER_NAME = "IEDriverServer_x32_3.13.0.exe";
+        final String DRIVER_NAME = "IEDriverServer_x32_3.13.0.5.exe";
 
         try {
             Runtime.getRuntime().exec("taskkill /T /F /IM " + DRIVER_NAME);
